@@ -24,9 +24,3 @@ def getProgrammingLanguage(soup: BeautifulSoup) -> set:
             data.add(language.text)
 
     return sorted(data)
-
-
-q: BeautifulSoup = getWikiPage()
-
-
-print(getProgrammingLanguage(soup=q))

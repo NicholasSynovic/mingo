@@ -24,3 +24,9 @@ def getProgrammingLanguage(soup: BeautifulSoup) -> set:
             data.add(language.text)
 
     return sorted(data)
+
+
+def exportProgrammingLanguages(data: set) -> None:
+    with open(file="languages.txt", mode="w") as file:
+        file.writelines(data)
+        file.close()

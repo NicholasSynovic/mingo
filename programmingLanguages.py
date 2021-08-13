@@ -3,8 +3,8 @@ from bs4.element import ResultSet, Tag
 from requests import get
 
 
-def getPage(page: str) -> BeautifulSoup:
-    page = get(url=page).text
+def getPage(wikipediaPage: str) -> BeautifulSoup:
+    page = get(url=wikipediaPage).text
 
     return BeautifulSoup(markup=page, features="lxml")
 
@@ -30,3 +30,13 @@ def exportProgrammingLanguages(data: set) -> None:
     with open(file="languages.txt", mode="w") as file:
         file.writelines(data)
         file.close()
+
+
+if __name__ == "__main__":
+    soup: BeautifulSoup = getPage(
+        wikipediaPage="https://en.wikipedia.org/wiki/List_of_programming_languages"
+    )
+
+    languages: set = getProgrammingLanguage(soup=soup)
+
+    exportProgrammingLanguages(data=languages)

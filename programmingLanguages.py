@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, Tag
 from requests import get
+from json import dump
 
 
 def getPage(wikipediaPage: str) -> BeautifulSoup:
@@ -9,8 +10,8 @@ def getPage(wikipediaPage: str) -> BeautifulSoup:
     return BeautifulSoup(markup=page, features="lxml")
 
 
-def getProgrammingLanguage(soup: BeautifulSoup) -> set:
-    data: set = set()
+def getProgrammingLanguage(soup: BeautifulSoup) -> dict:
+    data: dict = {}
 
     letters: ResultSet = soup.findChildren(name="div", attrs={"class": "div-col"})
 
@@ -21,14 +22,21 @@ def getProgrammingLanguage(soup: BeautifulSoup) -> set:
 
         language: Tag
         for language in languages:
-            data.add(language.text + "\n")
+            url: str
+            try:
+                url = "https://en.wikipedia.org" + language.findChild("a").get(
+                    key="href"
+                )
+            except AttributeError:
+                url = ""
+            data[language.text] = url
 
-    return sorted(data)
+    return data
 
 
-def exportProgrammingLanguages(data: set) -> None:
-    with open(file="languages.txt", mode="w") as file:
-        file.writelines(data)
+def exportProgrammingLanguages(data: dict) -> None:
+    with open(file="languages.json", mode="w") as file:
+        dump(obj=data, fp=file)
         file.close()
 
 

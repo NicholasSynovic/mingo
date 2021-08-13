@@ -3,8 +3,8 @@ from bs4.element import ResultSet, Tag
 from requests import get
 
 
-def getWikiPage() -> BeautifulSoup:
-    page = get(url="https://en.wikipedia.org/wiki/List_of_programming_languages").text
+def getPage(page: str) -> BeautifulSoup:
+    page = get(url=page).text
 
     return BeautifulSoup(markup=page, features="lxml")
 

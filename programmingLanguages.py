@@ -21,7 +21,7 @@ def getProgrammingLanguage(soup: BeautifulSoup) -> set:
 
         language: Tag
         for language in languages:
-            data.add(language.text)
+            data.add(language.text + "\n")
 
     return sorted(data)
 

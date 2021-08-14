@@ -7,4 +7,4 @@
 
 This is simply a list creator, nothing crazy.
 
-This list is generated once a month and can viewed in JSON format [here](https://raw.githubusercontent.com/NicholasSynovic/programming-languages/main/languages.json).
+This list is generated once a month and can viewed in JSON format [here](https://github.com/NicholasSynovic/programming-languages/releases).

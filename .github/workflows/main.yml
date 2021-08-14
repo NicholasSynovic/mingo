@@ -38,5 +38,4 @@ jobs:
         with:
           token: ${{ secrets.TOKEN }}
           asset-name: 'languages.json'
-          tag-name: $(date +'%Y-%m-%d')
           file: 'languages.json'

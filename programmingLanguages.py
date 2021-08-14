@@ -1,8 +1,28 @@
+import argparse
+from argparse import Namespace
+
 from json import dump
 
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, Tag
 from requests import get
+
+
+def args() -> Namespace:
+    parser = argparse.ArgumentParser(
+        prog="Programming Languages",
+        description="A Python project to get a list of programming languages from Wikipedia. The default behavior prints a random programming language to the console.",
+    )
+
+    parser.add_argument(
+        "-d",
+        "--download-only",
+        action="store_true",
+        required=False,
+        help="Flag to download only a JSON file of the list of programming languages",
+    )
+
+    return parser.parse_args()
 
 
 def getPage(wikipediaPage: str) -> BeautifulSoup:

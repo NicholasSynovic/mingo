@@ -8,7 +8,7 @@ on:
     branches:
       - main
   pull_request:
-    branches: 
+    branches:
       - main
   schedule:
     - cron: "0 0 15 * *"
@@ -19,27 +19,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.9.6'
-          
+
       - name: Install requirements
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install -r requirements.txt
-        
+
       - name: Execute script
         run: python3 programmingLanguages.py
-        
+
       - name: Release language list
         uses: djnicholson/release-action@v2.10
         with:
           token: ${{ secrets.TOKEN }}
-          release-name: 'Programming Language JSON'
-          tag-name: 'rolling'
           asset-name: 'languages.json'
           file: 'languages.json'
-
-

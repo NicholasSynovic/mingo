@@ -22,7 +22,7 @@ jobs:
 
 
       - name: set release date
-        run: echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${TIME}
+        run: echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${{ env.TIME}}
 
       - name: Setup Python
         uses: actions/setup-python@v2

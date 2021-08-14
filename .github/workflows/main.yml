@@ -38,7 +38,7 @@ jobs:
         with:
           token: ${{ secrets.TOKEN }}
           release-name: 'Programming Language JSON'
-          tag-name: ''
+          tag-name: 'rolling'
           asset-name: 'languages.json'
           file: 'languages.json'
 

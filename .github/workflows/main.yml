@@ -31,7 +31,7 @@ jobs:
           python3 -m pip install -r requirements.txt
 
       - name: Execute script
-        run: python3 src/mingo/main.py -o && ls
+        run: python3 src/mingo/main.py -o
 
       - name: Release language list
         uses: djnicholson/release-action@v2.10
@@ -39,4 +39,5 @@ jobs:
           token: ${{ secrets.TOKEN }}
           asset-name: 'languages.json'
           release-name: ${{ github.run_number }}-run
+          tag-name: ${{ github.run_number }}-run
           file: 'languages.json'

@@ -8,3 +8,8 @@
 This is simply a list creator, nothing crazy.
 
 This list is generated once a month and can viewed in JSON format [here](https://github.com/NicholasSynovic/programming-languages/releases).
+
+## How to Execute
+
+1. `pip install mingo`
+2. `python3 -m mingo [-d] [-o] [-v]`

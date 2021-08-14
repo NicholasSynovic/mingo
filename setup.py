@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="mingo",
-    version="0.0.4",
+    version="0.0.666666",
     author="Nicholas M. Synovic",
     author_email="nicholas.synovic@gmail.com",
     description="A Python project to get a list of programming languages from Wikipedia",

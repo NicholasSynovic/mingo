@@ -38,5 +38,5 @@ jobs:
         with:
           token: ${{ secrets.TOKEN }}
           asset-name: 'languages.json'
-          release-name: ${{ GITHUB_SHA }}
+          release-name: ${{ github.sha }}
           file: 'languages.json'

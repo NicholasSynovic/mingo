@@ -1,4 +1,4 @@
-# Programming Languages
+# Mingo
 >  A Python project to get a list of programming languages from [Wikipedia](https://en.wikipedia.org/wiki/List_of_programming_languages)
 
 [![Release File](https://github.com/NicholasSynovic/programming-languages/actions/workflows/main.yml/badge.svg)](https://github.com/NicholasSynovic/programming-languages/actions/workflows/main.yml)

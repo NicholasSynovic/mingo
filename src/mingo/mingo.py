@@ -17,7 +17,7 @@ def args() -> Namespace:
     )
 
     parser.add_argument(
-        "-d",
+        "-o",
         "--download-only",
         action="store_true",
         required=False,
@@ -30,6 +30,16 @@ def args() -> Namespace:
         action="store_true",
         required=False,
         help="Flag to enable verbosity",
+    )
+
+    parser.add_argument(
+        "-d",
+        "--directory",
+        nargs=1,
+        type=str,
+        required=False,
+        default=".",
+        help="Directory where to store downloaded files",
     )
 
     return parser.parse_args()
@@ -97,9 +107,9 @@ if __name__ == "__main__":
             lang: str = list(langURL.keys())[0]
             print("\n" + lang + " : " + langURL[lang] + "\n")
 
-        filepath: str = join(getcwd(), "languages.json")
+        filepath: str = join(args().directory[0], "languages.json")
         print(f"Saving programming languages to {filepath}")
-        exportProgrammingLanguages(data=languages)
+        exportProgrammingLanguages(data=languages, filepath=filepath)
         return languages
 
     def _quietRun() -> dict:
@@ -113,7 +123,8 @@ if __name__ == "__main__":
             lang: str = list(langURL.keys())[0]
             print(lang + " : " + langURL[lang])
 
-        exportProgrammingLanguages(data=languages)
+        filepath: str = join(args().directory[0], "languages.json")
+        exportProgrammingLanguages(data=languages, filepath=filepath)
         return languages
 
     if args().verbose:

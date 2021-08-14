@@ -38,4 +38,4 @@ jobs:
         with:
           token: ${{ secrets.TOKEN }}
           asset-name: 'languages.json'
-          file: 'src/mingo/languages.json'
+          file: 'languages.json'

@@ -1,11 +1,15 @@
 import argparse
 from argparse import Namespace
 
+from random import randint, random
 from json import dump
+from typing import KeysView
 
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, Tag
 from requests import get
+
+from pprint import pprint
 
 
 def args() -> Namespace:
@@ -61,11 +65,21 @@ def exportProgrammingLanguages(data: dict) -> None:
         file.close()
 
 
+def getRandomLanguage(data: dict) -> dict:
+
+    languages: list = list(data.keys())
+    index: int = randint(0, len(languages) - 1)
+    key: str = languages[index]
+    return {key: data[key]}
+
+
 if __name__ == "__main__":
     soup: BeautifulSoup = getPage(
         wikipediaPage="https://en.wikipedia.org/wiki/List_of_programming_languages"
     )
 
-    languages: set = getProgrammingLanguage(soup=soup)
+    languages: dict = getProgrammingLanguage(soup=soup)
 
     exportProgrammingLanguages(data=languages)
+
+    getRandomLanguage(data=languages)

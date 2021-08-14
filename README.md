@@ -1,6 +1,8 @@
 # Programming Languages
 >  A Python project to get a list of programming languages from Wikiepedia
 
+[![Release File](https://github.com/NicholasSynovic/programming-languages/actions/workflows/main.yml/badge.svg)](https://github.com/NicholasSynovic/programming-languages/actions/workflows/main.yml)
+
 ## About
 
 This is simply a list creator, nothing crazy.

@@ -20,6 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+
+      - name: set release date
+        run: echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${TIME}
+
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
@@ -38,4 +42,6 @@ jobs:
         with:
           token: ${{ secrets.TOKEN }}
           asset-name: 'languages.json'
+          tag-name: ${{ TIME }}
+          release-name: ${{ TIME }}-snap
           file: 'languages.json'

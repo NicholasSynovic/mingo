@@ -1,7 +1,8 @@
+from json import dump
+
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet, Tag
 from requests import get
-from json import dump
 
 
 def getPage(wikipediaPage: str) -> BeautifulSoup:

@@ -90,44 +90,46 @@ def getRandomLanguage(data: dict) -> dict:
     return {key: data[key]}
 
 
-if __name__ == "__main__":
+def _verboseRun() -> dict:
+    wikipediaPage: str = (
+        "https://en.wikipedia.org/wiki/List_of_programming_languages"
+    )
+    print(f"Getting HTML from {wikipediaPage}")
+    soup: BeautifulSoup = getPage(page=wikipediaPage)
+    print("Scraping programming languages from the downloaded HTML")
+    languages: dict = getProgrammingLanguage(soup=soup)
 
-    def _verboseRun() -> dict:
-        wikipediaPage: str = (
-            "https://en.wikipedia.org/wiki/List_of_programming_languages"
-        )
-        print(f"Getting HTML from {wikipediaPage}")
-        soup: BeautifulSoup = getPage(page=wikipediaPage)
-        print("Scraping programming languages from the downloaded HTML")
-        languages: dict = getProgrammingLanguage(soup=soup)
+    if args().download_only is False:
+        print("Randomly selecting a programming language")
+        langURL: dict = getRandomLanguage(data=languages)
+        lang: str = list(langURL.keys())[0]
+        print("\n" + lang + " : " + langURL[lang] + "\n")
 
-        if args().download_only is False:
-            print("Randomly selecting a programming language")
-            langURL: dict = getRandomLanguage(data=languages)
-            lang: str = list(langURL.keys())[0]
-            print("\n" + lang + " : " + langURL[lang] + "\n")
+    filepath: str = join(args().directory[0], "languages.json")
+    print(f"Saving programming languages to {filepath}")
+    exportProgrammingLanguages(data=languages, filepath=filepath)
+    return languages
 
-        filepath: str = join(args().directory[0], "languages.json")
-        print(f"Saving programming languages to {filepath}")
-        exportProgrammingLanguages(data=languages, filepath=filepath)
-        return languages
+def _quietRun() -> dict:
+    soup: BeautifulSoup = getPage(
+        page="https://en.wikipedia.org/wiki/List_of_programming_languages"
+    )
+    languages: dict = getProgrammingLanguage(soup=soup)
 
-    def _quietRun() -> dict:
-        soup: BeautifulSoup = getPage(
-            page="https://en.wikipedia.org/wiki/List_of_programming_languages"
-        )
-        languages: dict = getProgrammingLanguage(soup=soup)
+    if args().download_only is False:
+        langURL: dict = getRandomLanguage(data=languages)
+        lang: str = list(langURL.keys())[0]
+        print(lang + " : " + langURL[lang])
 
-        if args().download_only is False:
-            langURL: dict = getRandomLanguage(data=languages)
-            lang: str = list(langURL.keys())[0]
-            print(lang + " : " + langURL[lang])
+    filepath: str = join(args().directory[0], "languages.json")
+    exportProgrammingLanguages(data=languages, filepath=filepath)
+    return languages
 
-        filepath: str = join(args().directory[0], "languages.json")
-        exportProgrammingLanguages(data=languages, filepath=filepath)
-        return languages
-
+def main()  ->  dict:
     if args().verbose:
         _verboseRun()
     else:
         _quietRun()
+
+if __name__ == "__main__":
+    main()

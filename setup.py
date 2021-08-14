@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="mingo-nsynovic",
-    version="0.0.1",
+    version="0.0.4",
     author="Nicholas M. Synovic",
     author_email="nicholas.synovic@gmail.com",
     description="A Python project to get a list of programming languages from Wikipedia",
@@ -17,7 +17,6 @@ setuptools.setup(
     },
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: GNU Affero License",
         "Operating System :: OS Independent",
     ],
     package_dir={"": "src"},

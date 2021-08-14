@@ -31,12 +31,24 @@ jobs:
           python3 -m pip install -r requirements.txt
 
       - name: Execute script
-        run: python3 src/mingo/main.py -o && ls
+        run: python3 src/mingo/main.py -o
 
       - name: Release language list
         uses: djnicholson/release-action@v2.10
         with:
           token: ${{ secrets.TOKEN }}
           asset-name: 'languages.json'
-          release-name: ${{ github.sha }}
+          release-name: ${{ github.run_number }}-run
+          tag-name: ${{ github.run_number }}-run
           file: 'languages.json'
+      
+      - name: Build project
+        run: |
+          python3 -m pip install --upgrade build
+          python3 -m build
+
+      - name: Release to Pypi
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}

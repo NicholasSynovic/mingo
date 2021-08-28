@@ -2,6 +2,7 @@
 >  A Python project to get a list of programming languages from [Wikipedia](https://en.wikipedia.org/wiki/List_of_programming_languages)
 
 [![Release List](https://github.com/NicholasSynovic/mingo/actions/workflows/main.yml/badge.svg)](https://github.com/NicholasSynovic/mingo/actions/workflows/main.yml)
+[![Publish to PyPi](https://github.com/NicholasSynovic/mingo/actions/workflows/pypi.yml/badge.svg)](https://github.com/NicholasSynovic/mingo/actions/workflows/pypi.yml)
 
 ## About
 
